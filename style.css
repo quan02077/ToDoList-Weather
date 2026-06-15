@@ -1,0 +1,177 @@
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-image: url("hinhAnh/Monday Fellings! xD.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-bottom: 24px;
+}
+
+.todo-panel,
+.progress-section {
+    box-shadow: 0 14px 34px rgba(18, 30, 46, 0.16);
+}
+
+.app-header {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.app-header h1,
+.app-header p,
+.progress-section h1 {
+    margin-bottom: 0;
+}
+
+.app-header p {
+    max-width: 760px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#addTaskBtn,
+#saveTaskBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+}
+
+.card {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+.card-body {
+    padding: 18px;
+}
+
+.add-task-card {
+    position: relative;
+}
+
+.add-task-card .card-body {
+    padding-top: 44px;
+}
+
+.task-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+}
+
+.task-table {
+    margin-bottom: 0;
+}
+
+.task-table th,
+.task-table td {
+    padding: 12px 10px;
+    vertical-align: middle;
+}
+
+.task-index-col {
+    width: 56px;
+}
+
+.task-status-col {
+    width: 150px;
+}
+
+.task-action-col {
+    width: 150px;
+}
+
+.task-actions {
+    white-space: nowrap;
+}
+
+.task-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: 0 2px;
+    padding: 0;
+}
+
+.footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.progress-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    border: 1px solid rgba(25, 135, 84, 0.16);
+    border-radius: 12px;
+    background: rgba(25, 135, 84, 0.08);
+    color: #255642;
+}
+
+.progress-summary span {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.progress-summary strong {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #198754;
+    box-shadow: 0 6px 18px rgba(25, 135, 84, 0.14);
+}
+
+.custom-progress {
+    height: 36px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e8f3ee;
+    box-shadow: inset 0 2px 6px rgba(24, 58, 42, 0.14);
+}
+
+.custom-progress-bar {
+    align-items: flex-end;
+    justify-content: center;
+    padding-right: 14px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #20c997, #198754);
+    box-shadow: 0 8px 20px rgba(25, 135, 84, 0.28);
+}
+
+.custom-progress-bar span {
+    font-weight: 800;
+    line-height: 36px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 576px) {
+    .todo-panel,
+    .progress-section {
+        padding: 24px !important;
+    }
+
+    .progress-summary {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .custom-progress {
+        height: 32px;
+    }
+
+    .custom-progress-bar span {
+        line-height: 32px;
+    }
+}
