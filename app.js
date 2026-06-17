@@ -6,6 +6,10 @@ let addTaskForm = document.getElementById('addTaskForm');
 let taskList = document.getElementById('taskList');
 let formatName = document.getElementById('formatName');
 let taskTableBody = document.querySelector('#tasksTable tbody');
+let progressContainer = document.querySelector('.custom-progress');
+let progressBar = document.querySelector('.custom-progress-bar');
+let progressPercentText = document.querySelector('.custom-progress-bar span');
+let progressSummaryText = document.querySelector('.progress-summary strong');
 
 let listToDo = JSON.parse(localStorage.getItem('toDoList')) || [];
 let editingId = null;
@@ -68,6 +72,18 @@ function renderTaskList() {
     });
 
     taskTableBody.innerHTML = html;
+    updateProgress();
+}
+
+function updateProgress() {
+    const totalTasks = listToDo.length;
+    const completedTasks = listToDo.filter(task => task.completed).length;
+    const percent = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+
+    progressBar.style.width = percent + '%';
+    progressContainer.setAttribute('aria-valuenow', percent);
+    progressPercentText.innerText = percent + '%';
+    progressSummaryText.innerText = `${completedTasks}/${totalTasks} công việc - ${percent}%`;
 }
 
 addBtn.addEventListener('click', () => {
@@ -91,6 +107,7 @@ saveBtn.addEventListener('click', (e) => {
         listToDo.push({
             id: getNextId(),
             name: taskName,
+            completed: false,
         });
 
         alert('Thêm công việc thành công!');
@@ -150,7 +167,7 @@ taskTableBody.addEventListener('click', (e) => {
             return;
         }
 
-        taskToComplete.completed = true;
+        taskToComplete.completed = !taskToComplete.completed;
         saveToLocalStorage();
         renderTaskList();
     }
