@@ -13,6 +13,8 @@ let progressSummaryText = document.querySelector('.progress-summary strong');
 
 let listToDo = JSON.parse(localStorage.getItem('toDoList')) || [];
 let editingId = null;
+let animatedAddedId = null;
+let animatedEditedId = null;
 
 function saveToLocalStorage() {
     localStorage.setItem('toDoList', JSON.stringify(listToDo));
@@ -57,8 +59,15 @@ function renderTaskList() {
     let html = '';
 
     listToDo.forEach((taskItem, index) => {
+        const taskId = String(taskItem.id);
+        const animationClass = taskId === animatedAddedId
+            ? 'task-row-enter'
+            : taskId === animatedEditedId
+                ? 'task-row-edit'
+                : '';
+
         html += `
-            <tr>
+            <tr class="${animationClass}">
                 <td>${index + 1}</td>
                 <td>${escapeHtml(taskItem.name)}</td>
                 <td><span class="badge bg-${taskItem.completed ? 'success' : 'warning'} fw-bold">${taskItem.completed ? 'Hoàn thành' : 'Chưa hoàn thành'}</span></td>
@@ -72,6 +81,8 @@ function renderTaskList() {
     });
 
     taskTableBody.innerHTML = html;
+    animatedAddedId = null;
+    animatedEditedId = null;
     updateProgress();
 }
 
@@ -104,18 +115,22 @@ saveBtn.addEventListener('click', (e) => {
     }
 
     if (editingId === null) {
+        const newTaskId = getNextId();
+
         listToDo.push({
-            id: getNextId(),
+            id: newTaskId,
             name: taskName,
             completed: false,
         });
 
+        animatedAddedId = String(newTaskId);
         alert('Thêm công việc thành công!');
     } else {
         const taskToEdit = listToDo.find(task => String(task.id) === editingId);
 
         if (taskToEdit) {
             taskToEdit.name = taskName;
+            animatedEditedId = editingId;
             alert('Cập nhật công việc thành công!');
         }
     }
