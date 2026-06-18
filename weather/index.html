@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <main class="weather-page">
+        <section class="weather-shell">
+            <div class="weather-header">
+                <p class="eyebrow">Weather App</p>
+                <h1>Thời tiết hôm nay</h1>
+                <p>Theo dõi nhiệt độ, độ ẩm và tốc độ gió theo tên thành phố.</p>
+            </div>
+
+            <form class="search-panel">
+                <label for="cityInput">Tên thành phố</label>
+                <div class="search-row">
+                    <input type="text" id="cityInput" placeholder="Ví dụ: Ha Noi, Tokyo, London" autocomplete="off">
+                    <button type="submit" id="searchBtn">Search</button>
+                </div>
+                <p id="errorMessage" class="error-message" aria-live="polite"></p>
+            </form>
+
+            <article class="weather-card" id="weatherCard">
+                <div class="weather-card-top">
+                    <div>
+                        <p class="card-label">Current weather</p>
+                        <h2 id="cityName">Ha Noi</h2>
+                    </div>
+                    <img id="weatherIcon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="Weather icon">
+                </div>
+
+                <div class="temperature-row">
+                    <p id="temperature">28°C</p>
+                    <span id="weatherDesc">Partly cloudy</span>
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span>Độ ẩm</span>
+                        <strong id="humidity">72%</strong>
+                    </div>
+                    <div class="detail-item">
+                        <span>Tốc độ gió</span>
+                        <strong id="windSpeed">12 km/h</strong>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
