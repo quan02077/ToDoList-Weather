@@ -125,6 +125,17 @@ body {
     transform: scale(0.97);
 }
 
+#searchBtn:disabled {
+    cursor: wait;
+    opacity: 0.72;
+    box-shadow: none;
+}
+
+#cityInput:disabled {
+    cursor: wait;
+    background: #f1f5f9;
+}
+
 .error-message {
     min-height: 22px;
     margin: 10px 0 0;
@@ -138,6 +149,13 @@ body {
     border: 1px solid var(--line);
     border-radius: 16px;
     background: linear-gradient(135deg, #ffffff, #f5faff);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.weather-card.is-loading {
+    opacity: 0.68;
+    transform: scale(0.99);
+    animation: loadingPulse 900ms ease-in-out infinite alternate;
 }
 
 .weather-card-top {
@@ -205,6 +223,16 @@ body {
 
 .detail-item strong {
     font-size: 22px;
+}
+
+@keyframes loadingPulse {
+    from {
+        box-shadow: 0 0 0 rgba(37, 99, 235, 0);
+    }
+
+    to {
+        box-shadow: 0 16px 34px rgba(37, 99, 235, 0.14);
+    }
 }
 
 @media (max-width: 640px) {

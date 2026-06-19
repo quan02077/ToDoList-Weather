@@ -17,7 +17,7 @@
                 <p>Theo dõi nhiệt độ, độ ẩm và tốc độ gió theo tên thành phố.</p>
             </div>
 
-            <form class="search-panel">
+            <form class="search-panel" onsubmit="fetchData(event)">
                 <label for="cityInput">Tên thành phố</label>
                 <div class="search-row">
                     <input type="text" id="cityInput" placeholder="Ví dụ: Ha Noi, Tokyo, London" autocomplete="off">
@@ -30,13 +30,13 @@
                 <div class="weather-card-top">
                     <div>
                         <p class="card-label">Current weather</p>
-                        <h2 id="cityName">Ha Noi</h2>
+                        <h2 id="cityName">Ho Chi Minh City</h2>
                     </div>
                     <img id="weatherIcon" src="https://openweathermap.org/img/wn/02d@2x.png" alt="Weather icon">
                 </div>
 
                 <div class="temperature-row">
-                    <p id="temperature">28°C</p>
+                    <p id="temperature">31.2°C</p>
                     <span id="weatherDesc">Partly cloudy</span>
                 </div>
 
