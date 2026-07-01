@@ -1,0 +1,26 @@
+.content {
+    border: 1px solid #ff5050;
+    border-radius: 10px;
+}
+
+.navbar {
+    ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+
+        li {
+            a {
+                font-size: 20px;
+                text-decoration: none;
+                color: black;
+            }
+        }
+    }
+}
+
+.active {
+    background-color: #8d8f8d;
+    color: white;
+    border-radius: 10px;
+}
