@@ -1,6 +1,6 @@
 # TodoList - Weather App
 
-Repository này chứa các project JavaScript được thực hiện trong quá trình học Frontend Development.
+Repository này chứa các project JavaScript được thực hiện trong quá trình học.
 
 ## Mục tiêu
 
