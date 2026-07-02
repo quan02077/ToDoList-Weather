@@ -1,11 +1,11 @@
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { NavLink, Routes, Route, Navigate } from 'react-router-dom'
 import clsx from 'clsx'
 import styles from './Content.module.scss'
 import ToDoList from './todo'
 import Weather from './weather'
 
 function Content() {
-    const classes = clsx(styles.content, 'container', 'mt-4')
+    const classes = clsx('container', 'mt-4')
     const navClasses = clsx(styles.navbar)
     const getNavLinkClass = ({ isActive }) => isActive ? styles.active : ''
 
@@ -30,6 +30,7 @@ function Content() {
                 <Routes>
                     <Route path="/todo" element={<ToDoList />} />
                     <Route path="/weather" element={<Weather />} />
+                    <Route path="*" element={<Navigate to="/todo" replace />} />
                 </Routes>
             </div>
         </div>
