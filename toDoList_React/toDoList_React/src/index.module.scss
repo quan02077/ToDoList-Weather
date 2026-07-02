@@ -1,6 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Oswald:wght@200..700&family=Playwrite+AT:ital,wght@0,100..400;1,100..400&family=Playwrite+GB+S+Guides:ital@0;1&family=Potta+One&display=swap');
+@use 'var';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+// =========================================================
+// Ở đây mình dùng SCSS variables ($...) để gán giá trị cho
+// CSS variables (--...). Cú pháp #{} để nhúng SCSS var vào
+// trong một chuỗi CSS. Đây là "best of both worlds":
+//   - Giá trị được quản lý tập trung ở _var.scss (SCSS)
+//   - Dark mode vẫn hoạt động nhờ CSS variables (runtime)
+// =========================================================
+
+/* ===== CSS VARIABLES — LIGHT MODE ===== */
+:root {
+    --bg-gradient:      #{var.$light-bg};
+    --card-bg:          #{var.$light-card-bg};
+    --card-border:      #{var.$light-card-border};
+    --card-shadow:      #{var.$light-card-shadow};
+    --text-primary:     #{var.$light-text};
+    --text-secondary:   #{var.$light-text-sec};
+    --text-muted:       #{var.$light-text-muted};
+    --primary:          #{var.$primary};
+    --primary-light:    #{var.$primary-light-bg};
+    --primary-gradient: #{var.$gradient-primary};
+    --success:          #{var.$success};
+    --success-light:    #{var.$success-light};
+    --warning-light:    #{var.$warning-light};
+    --warning-text:     #{var.$warning-text};
+    --danger:           #{var.$danger};
+    --danger-light:     #{var.$danger-light};
+    --border:           #{var.$light-border};
+    --input-bg:         #{var.$light-input-bg};
+    --hover-bg:         #{var.$light-hover-bg};
+    --table-header:     #{var.$gradient-table};
+    --table-stripe:     rgba(124, 58, 237, 0.03);
+    --navbar-bg:        #{var.$light-navbar-bg};
+    --transition:       #{var.$transition-base};
+}
+
+/* ===== CSS VARIABLES — DARK MODE ===== */
+body.dark {
+    --bg-gradient:      #{var.$dark-bg};
+    --card-bg:          #{var.$dark-card-bg};
+    --card-border:      #{var.$dark-card-border};
+    --card-shadow:      #{var.$dark-card-shadow};
+    --text-primary:     #{var.$dark-text};
+    --text-secondary:   #{var.$dark-text-sec};
+    --text-muted:       #{var.$dark-text-muted};
+    --primary:          #{var.$dark-primary};
+    --primary-light:    #{var.$dark-primary-bg};
+    --primary-gradient: linear-gradient(135deg, #{var.$primary-dark}, #{var.$dark-primary});
+    --success:          #34d399;
+    --success-light:    rgba(52, 211, 153, 0.15);
+    --warning-light:    rgba(251, 191, 36, 0.15);
+    --warning-text:     #fbbf24;
+    --danger:           #f87171;
+    --danger-light:     rgba(248, 113, 113, 0.15);
+    --border:           #{var.$dark-border};
+    --input-bg:         #{var.$dark-input-bg};
+    --hover-bg:         #{var.$dark-hover-bg};
+    --table-header:     linear-gradient(135deg, #{var.$primary-dark}, #{var.$primary});
+    --table-stripe:     rgba(167, 139, 250, 0.05);
+    --navbar-bg:        #{var.$dark-navbar-bg};
+}
+
+/* ===== GLOBAL RESET & BASE ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
-    font-family: 'Potta One', sans-serif;
-    background-image: linear-gradient(to right, #949ecc 0%, #a382c4 100%);
+    font-family: var.$font-base;       // dùng SCSS variable trực tiếp
+    background: var(--bg-gradient);    // dùng CSS variable (cần thay đổi runtime)
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: var(--text-primary);
+    transition: background 0.4s ease, color 0.3s ease;
+    -webkit-font-smoothing: antialiased;
 }
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: var.$radius-sm;
+}
+
+/* ===== FOCUS STATES FOR ACCESSIBILITY ===== */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+    border-radius: var.$radius-sm;   // dùng SCSS variable cho border-radius
+}
+

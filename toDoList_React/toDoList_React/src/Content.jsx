@@ -5,36 +5,31 @@ import ToDoList from './todo'
 import Weather from './weather'
 
 function Content() {
-    const classes = clsx('container', 'mt-4')
-    const navClasses = clsx(styles.navbar)
-    const getNavLinkClass = ({ isActive }) => isActive ? styles.active : ''
+    const getNavLinkClass = ({ isActive }) =>
+        isActive ? clsx(styles.navPill, styles.navPillActive) : styles.navPill
 
     return (
-        <div className={classes}>
-            <nav className={navClasses}>
-                <ul>
-                    <li>
-                        <NavLink to="/todo" className={getNavLinkClass}>
-                            ToDoList
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/weather" className={getNavLinkClass}>
-                            Weather
-                        </NavLink>
-                    </li>
-                </ul>
+        <div className={styles.pageWrapper}>
+            {/* ===== PILL NAVIGATION ===== */}
+            <nav className={styles.navContainer} aria-label="Điều hướng chính">
+                <NavLink to="/todo" className={getNavLinkClass}>
+                    📋 To-Do
+                </NavLink>
+                <NavLink to="/weather" className={getNavLinkClass}>
+                    🌤️ Thời Tiết
+                </NavLink>
             </nav>
 
-            <div className="mt-4 p-4 text-center">
+            {/* ===== CONTENT AREA ===== */}
+            <main className={styles.contentArea}>
                 <Routes>
                     <Route path="/todo" element={<ToDoList />} />
                     <Route path="/weather" element={<Weather />} />
                     <Route path="*" element={<Navigate to="/todo" replace />} />
                 </Routes>
-            </div>
+            </main>
         </div>
     )
 }
 
-export default Content
+export default Content
